@@ -21,9 +21,9 @@ const Navbar = () => {
     navigate("/login");
   };
   return (
-    <header className="h-16 flex items-center bg-quaternary drop-shadow-lg sticky top-0 z-10">
+    <header className="h-16 flex items-center bg-tertiary drop-shadow-lg sticky top-0 z-10">
       <nav className="px-10 lg:px-40 flex w-full items-center justify-between">
-        <Label className="font-black text-xl text-quinary cursor-pointer">
+        <Label className="font-black text-xl text-quaternary cursor-pointer">
           !Spotify
         </Label>
         <Popover>

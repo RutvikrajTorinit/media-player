@@ -6,7 +6,7 @@ const TrackCard = (props: { song: TRACK }) => {
   const { artistName, collectionName, artworkUrl100 } = song;
 
   return (
-    <Card className="h-[24rem] md:h-[16rem] lg:h-[20rem] bg-bg border-bg drop-shadow-none shadow-none hover:scale-105 duration-300 p-5 gap-3 text-quinary">
+    <Card className="h-min bg-bg border-none drop-shadow-none shadow-none hover:scale-105 duration-300 p-5 gap-3 text-quinary">
       <img
         src={artworkUrl100}
         alt="track preview"
