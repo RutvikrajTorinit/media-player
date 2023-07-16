@@ -32,16 +32,16 @@ const Dashboard = () => {
 
   return (
     <Tabs defaultValue="track">
-      <TabsList className="sticky top-[7rem] z-10 bg-primary">
+      <TabsList className="sticky top-[7rem] z-10">
         <TabsTrigger
           value="track"
-          className="text-quinary data-[state=active]:bg-quinary data-[state=active]:text-tertiary"
+          className="text-quinary data-[state=active]:bg-tertiary data-[state=active]:text-quaternary"
         >
           Tracks
         </TabsTrigger>
         <TabsTrigger
           value="audiobook"
-          className="text-quinary data-[state=active]:bg-quinary data-[state=active]:text-tertiary"
+          className="text-quinary data-[state=active]:bg-tertiary data-[state=active]:text-quaternary"
         >
           Audio Books
         </TabsTrigger>
@@ -57,8 +57,7 @@ const Dashboard = () => {
       </TabsContent>
 
       <TabsContent value="audiobook">
-        <Label>Audio books</Label>
-        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {audio.tracks?.length
             ? audio.audioBooks?.map((audioBook, id) => (
                 <AudioBookCard key={id} audioBook={audioBook} />

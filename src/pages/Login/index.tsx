@@ -4,6 +4,7 @@ import { ChangeEvent, MouseEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import LabeledInput from "@/components/ui/labeledInput";
+import { TypographyP } from "@/components/ui/typography";
 
 interface LOGIN_DATA {
   username: string;
@@ -56,9 +57,11 @@ const Login = () => {
               className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
                 relative z-10"
             >
-              <p className="w-full text-4xl font-medium text-center leading-snug">
+              {/* <p className="w-full text-4xl font-medium text-center leading-snug">
+              </p> */}
+              <TypographyP className="w-full text-4xl font-medium text-center leading-snug">
                 Welcome to !Spotify
-              </p>
+              </TypographyP>
 
               <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
                 <LabeledInput
@@ -79,7 +82,6 @@ const Login = () => {
                   type="password"
                   required={true}
                 />
-
                 <Button
                   className="w-full"
                   disabled={isLoading}
