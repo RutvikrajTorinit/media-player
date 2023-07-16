@@ -1,15 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 import { TypographyH1 } from "../../typography";
 
 const AudioBookCard = (props: { audioBook: AUDIO_BOOK }) => {
   const { audioBook } = props;
-  const { artistName, collectionName, releaseDate, artworkUrl100 } = audioBook;
+  const { artistName, releaseDate, artworkUrl100 } = audioBook;
 
   return (
     <Card
@@ -20,10 +14,6 @@ const AudioBookCard = (props: { audioBook: AUDIO_BOOK }) => {
         backgroundSize: "cover",
       }}
     >
-      {/* <Avatar className="duration-1000">
-        <AvatarImage src={artworkUrl100} />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar> */}
       <div>
         <CardHeader className="p-1">
           {/* <CardTitle>{collectionName}</CardTitle> */}
