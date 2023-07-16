@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import AudioBookCard from "@/components/ui/Cards/AudioBookCard";
 import TrackCard from "@/components/ui/Cards/TrackCard";
-import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getSongs } from "@/services/songs";
 import { useEffect, useState } from "react";
