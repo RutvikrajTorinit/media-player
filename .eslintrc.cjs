@@ -30,5 +30,7 @@ module.exports = {
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-return": "off",
     "no-undef": "off",
+    "no-console": "error",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
   },
 };

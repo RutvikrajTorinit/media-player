@@ -11,12 +11,12 @@ const AudioCard = (props: AUDIO_CARD_PROPS) => {
 
   return (
     <Card className="h-min bg-background border-none drop-shadow-none shadow-none hover:scale-105 duration-300 p-5 gap-3 text-quinary">
-        <img
-          src={artworkUrl100}
-          alt="track preview"
-          className="rounded-lg shadow-xl w-full h-44"
-          style={{ maxHeight: "-webkit-fill-available" }}
-        />
+      <img
+        src={artworkUrl100}
+        alt="track preview"
+        className="rounded-lg shadow-xl object-cover h-32 md:h-36 lg:h-44"
+        style={{ maxHeight: "-webkit-fill-available" }}
+      />
       <CardHeader className="p-1">
         <TypographyH4 className="text-primary truncate">
           {collectionName}
