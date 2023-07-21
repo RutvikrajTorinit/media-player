@@ -83,10 +83,10 @@ const MediaControls = () => {
           className="w-10 h-10 md:w-12 md:h-12 rounded-full"
         />
         <div className="space-y-1.5">
-          <TypographyLarge className="text-sm truncate">
+          <TypographyLarge className="w-[7rem] md:w-56 text-sm truncate">
             {collectionCensoredName || "--"}
           </TypographyLarge>
-          <TypographyMuted className="text-background text-xs truncate">
+          <TypographyMuted className="w-[7rem] md:w-56 text-background text-xs truncate">
             {artistName || "--"}
           </TypographyMuted>
         </div>
