@@ -4,7 +4,7 @@ export const getSongs = async () => {
   try {
     const res = await getAll({
       endPoint:
-        "https://itunes.apple.com/search/?term=${term}&offset=${offset}&limit=100",
+        "https://itunes.apple.com/search/?term=tracks&offset=${offset}&limit=50",
     });
 
     return res?.data;
