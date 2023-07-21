@@ -1,53 +1,23 @@
 import AudioCard from "@/components/ui/Cards/Audio";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
-import { getSongs } from "@/services/songs";
-import { useEffect, useState } from "react";
+import { fetchAudios } from "@/features/audio/audioThunk";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-  const [audio, setAudio] = useState<{
-    tracks: TRACK[];
-    audioBooks: AUDIO_BOOK[];
-  }>({
-    tracks: [],
-    audioBooks: [],
-  });
+  const dispatch = useAppDispatch();
+
+  const { audios } = useAppSelector((state) => state.audio);
 
   useEffect(() => {
-    (async () => {
-      const data: { resultsCount: number; results: T[] } = await getSongs();
-      setAudio({
-        tracks: data.results.filter(
-          (data: T) => data.wrapperType === "track" && data.kind === "song"
-        ),
-        audioBooks: data.results.filter(
-          (data: T) => data.wrapperType === "audiobook"
-        ),
-      });
-    })();
+    dispatch(fetchAudios({}));
   }, []);
 
   return (
-    <Tabs defaultValue="track">
-      <TabsContent value="track">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4  lg:grid-cols-5">
-          {audio.tracks?.length
-            ? audio.tracks?.map((song, id) => (
-                <AudioCard key={id} audio={song} />
-              ))
-            : null}
-        </div>
-      </TabsContent>
-
-      <TabsContent value="audiobook">
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5">
-          {audio.tracks?.length
-            ? audio.audioBooks?.map((audioBook, id) => (
-                <AudioCard key={id} audio={audioBook} />
-              ))
-            : null}
-        </div>
-      </TabsContent>
-    </Tabs>
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4  lg:grid-cols-5">
+      {audios?.length
+        ? audios?.map((song, id) => <AudioCard key={id} audio={song} />)
+        : null}
+    </div>
   );
 };
 
