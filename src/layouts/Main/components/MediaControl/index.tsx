@@ -1,8 +1,3 @@
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { Slider } from "@/components/ui/slider";
 import { TypographyLarge, TypographyMuted } from "@/components/ui/typography";
 import { Play, SkipBack, SkipForward, Volume1, Volume2 } from "lucide-react";
@@ -17,7 +12,7 @@ const MediaControls = () => {
         <img
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
           alt="media image"
-          className="w-10 h-10 md:w-12 rounded-full animate-spin duration-1000"
+          className="w-10 h-10 md:w-12 md:h-12 rounded-full animate-spin duration-1000"
         />
         <div>
           <TypographyLarge className="text-sm">Song Name</TypographyLarge>
@@ -32,27 +27,8 @@ const MediaControls = () => {
           <SkipBack className="cursor-pointer" />
           <Play className="cursor-pointer" />
           <SkipForward className="cursor-pointer" />
-          <Popover>
-            <PopoverTrigger>
-              <Volume2 className="md:hidden md:cursor-pointer" />
-            </PopoverTrigger>
-            <PopoverContent className="-rotate-90 -mr-[5.5rem] mb-32 md:hidden">
-              <Slider
-                defaultValue={[33]}
-                max={100}
-                value={[volume]}
-                step={1}
-                onValueChange={(value) => setVolume(value[0])}
-              />
-            </PopoverContent>
-          </Popover>
         </div>
-        <Slider
-          defaultValue={[33]}
-          max={100}
-          step={1}
-          className="hidden md:flex w-[80%]"
-        />
+        <Slider defaultValue={[33]} max={100} step={1} className="w-[80%]" />
       </div>
 
       <div className="hidden md:flex gap-3 md:basis-3/12">
