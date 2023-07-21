@@ -37,7 +37,7 @@ export interface AUDIO {
   description: string;
 }
 
-const initAudio: AUDIO = {
+export const initAudio: AUDIO = {
   artistId: 0,
   artistName: "",
   artistViewUrl: "",

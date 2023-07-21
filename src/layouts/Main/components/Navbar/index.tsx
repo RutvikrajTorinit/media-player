@@ -6,6 +6,8 @@ import {
 } from "@/components/ui/popover";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { TypographyH2, TypographySmall } from "@/components/ui/typography";
+import { setIsPlaying } from "@/features/audio/audioSlice";
+import { useAppDispatch } from "@/store/hooks";
 import Cookies from "js-cookie";
 import { Menu } from "lucide-react";
 import { MouseEvent, useState } from "react";
@@ -18,11 +20,13 @@ const tabs = [
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLogout = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
     Cookies.remove("username");
+    dispatch(setIsPlaying(false));
 
     navigate("/login");
   };
