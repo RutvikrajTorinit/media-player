@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
@@ -6,21 +7,29 @@ import {
 } from "@/components/ui/popover";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { TypographyH2, TypographySmall } from "@/components/ui/typography";
-import { setIsPlaying } from "@/features/audio/audioSlice";
+import {
+  setIsPlaying,
+  setOffsetParam,
+  setSearchParam,
+} from "@/features/audio/audioSlice";
 import { useAppDispatch } from "@/store/hooks";
 import Cookies from "js-cookie";
 import { Menu } from "lucide-react";
-import { MouseEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { debounce } from "lodash";
 
-const tabs = [
-  { text: "Tracks", id: "tracks" },
-  { text: "Audio Book", id: "audio-book" },
-];
+// const tabs = [
+//   { text: "Tracks", id: "tracks" },
+//   { text: "Audio Book", id: "audio-book" },
+// ];
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  // const [selectedTab, setSelectedTab] = useState<string>("tracks");
+  const [searchText, setSearchText] = useState<string>("");
 
   const handleLogout = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -37,34 +46,39 @@ const Navbar = () => {
     { text: "Sign out", action: handleLogout },
   ];
 
-  const [selectedTab, setSelectedTab] = useState<string>("tracks");
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((searchTerm) => {
+        dispatch(setSearchParam(searchTerm));
+        dispatch(setOffsetParam(1));
+      }, 500),
+    []
+  );
+
+  const handleInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      setSearchText(value);
+      debouncedSearch(value);
+    },
+    [debouncedSearch]
+  );
 
   return (
     <nav className="bg-secondary drop-shadow-lg sticky top-0 z-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
             <TypographyH2 className="font-black border-accent text-text cursor-pointer">
               !Spotify
             </TypographyH2>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {tabs?.map((menu) => (
-                  <a
-                    key={menu.id}
-                    className={`rounded-md px-3 py-2 text-sm font-medium cursor-pointer ${
-                      selectedTab === menu.id
-                        ? "bg-text text-background"
-                        : "text-text"
-                    }`}
-                    aria-current="page"
-                    onClick={() => setSelectedTab(menu.id)}
-                  >
-                    {menu.text}
-                  </a>
-                ))}
-              </div>
-            </div>
+
+            <Input
+              type="search"
+              placeholder="Search..."
+              value={searchText}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
@@ -103,7 +117,7 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent className="bg-secondary md:hidden">
                 <div className="md:hidden" id="mobile-menu">
-                  <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                  {/* <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     {tabs?.map((menu) => (
                       <a
                         key={menu.id}
@@ -118,8 +132,8 @@ const Navbar = () => {
                         {menu.text}
                       </a>
                     ))}
-                  </div>
-                  <div className="border-t border-gray-700 pb-3 pt-4">
+                  </div> */}
+                  <div className="pb-3 pt-4">
                     <div className="flex items-center px-5">
                       <div className="flex-shrink-0">
                         <img
