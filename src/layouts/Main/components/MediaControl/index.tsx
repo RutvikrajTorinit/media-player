@@ -1,6 +1,11 @@
 import { Slider } from "@/components/ui/slider";
-import { TypographyLarge, TypographyMuted } from "@/components/ui/typography";
+import {
+  TypographyLarge,
+  TypographyMuted,
+  TypographySmall,
+} from "@/components/ui/typography";
 import { setIsPlaying, setPlayingSong } from "@/features/audio/audioSlice";
+import formattedDuration from "@/helpers/formatDuration";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   Pause,
@@ -104,7 +109,7 @@ const MediaControls = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 items-center basis-1/2 md:basis-6/12">
+      <div className="flex flex-col items-center basis-1/2 md:basis-6/12 gap-2">
         <div className="flex gap-3">
           <SkipBack className="cursor-pointer" onClick={handlePrevSong} />
           {isPlaying ? (
@@ -114,27 +119,39 @@ const MediaControls = () => {
           )}
           <SkipForward className="cursor-pointer" onClick={handleNextSong} />
         </div>
-        <Slider
-          defaultValue={[33]}
-          max={sleekTime}
-          value={[currentTime]}
-          min={0}
-          step={1}
-          className="w-[70%]"
-          onValueChange={(value) => {
-            audioRef.current.currentTime = value[0];
-            setCurrentTime(value[0]);
-          }}
-        />
-        <audio
-          ref={audioRef}
-          src={previewUrl}
-          autoPlay
-          onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
-          onDurationChange={() => setSleekTime(audioRef.current.duration)}
-          onEnded={handleSongEnded}
-        />
+
+        <div className="flex w-full items-center gap-1 justify-center">
+          <TypographySmall className="hidden md:block">
+            {formattedDuration(currentTime)}
+          </TypographySmall>
+
+          <Slider
+            defaultValue={[33]}
+            max={sleekTime}
+            value={[currentTime]}
+            min={0}
+            step={1}
+            className="w-[70%]"
+            onValueChange={(value) => {
+              audioRef.current.currentTime = value[0];
+              setCurrentTime(value[0]);
+            }}
+          />
+
+          <TypographySmall className="hidden md:block">
+            {formattedDuration(sleekTime)}
+          </TypographySmall>
+        </div>
       </div>
+
+      <audio
+        ref={audioRef}
+        src={previewUrl}
+        autoPlay
+        onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
+        onDurationChange={() => setSleekTime(audioRef.current.duration)}
+        onEnded={handleSongEnded}
+      />
 
       <div className="hidden md:flex gap-3 md:basis-3/12">
         <Volume1
