@@ -7,7 +7,7 @@ export interface GET_SONGS_QUERY_PROPS {
 
 export const getSongs = async (props: GET_SONGS_QUERY_PROPS) => {
   try {
-    const { offset = 1, searchTerm = "top100" } = props;
+    const { offset = 1, searchTerm = "eminem" } = props;
 
     let query = "";
 
@@ -15,10 +15,10 @@ export const getSongs = async (props: GET_SONGS_QUERY_PROPS) => {
       query += `offset=${offset}&`;
     }
 
-    query += `term=${searchTerm.length ? searchTerm : "top100"}&`;
+    query += `term=${searchTerm.length ? searchTerm : "eminem"}&`;
 
     const res = await getAll({
-      endPoint: `https://itunes.apple.com/search/?${query}limit=50`,
+      endPoint: `https://itunes.apple.com/search/?${query}limit=25`,
     });
 
     return res?.data;

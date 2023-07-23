@@ -28,6 +28,7 @@
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
     "js-cookie": "^3.0.5",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.259.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.3",
+    "@types/lodash": "^4.14.195",
     "@types/node": "^20.4.1",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",

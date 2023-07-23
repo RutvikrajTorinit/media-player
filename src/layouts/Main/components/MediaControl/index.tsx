@@ -16,7 +16,7 @@ const MediaControls = () => {
   const audioRef = useRef<any>();
   const dispatch = useAppDispatch();
 
-  const [volume, setVolume] = useState<number>(33);
+  const [volume, setVolume] = useState<number>(20);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [sleekTime, setSleekTime] = useState<number>(0);
 
@@ -29,9 +29,15 @@ const MediaControls = () => {
 
   useEffect(() => {
     if (playingSong) {
-      if (audioRef.current) audioRef.current.src = previewUrl;
+      if (audioRef.current) {
+        audioRef.current.src = previewUrl;
+      }
     }
   }, [playingSong, previewUrl]);
+
+  useEffect(() => {
+    audioRef.current.volume = volume / 100;
+  }, []);
 
   useEffect(() => {
     if (!isPlaying) {
@@ -73,6 +79,12 @@ const MediaControls = () => {
     dispatch(setPlayingSong(nextSong));
     dispatch(setIsPlaying(true));
   };
+
+  const handleSongEnded = () => {
+    handleNextSong();
+  };
+
+  // TODO Add playback loop linear random
 
   return (
     <div className="m-5 md:m-0 rounded-md md:rounded-none bottom-3 sticky px-3 md:px-10 xl:px-28 sm:bottom-0 h-16 bg-primary text-background flex justify-between md:justify-around items-center">
@@ -120,10 +132,7 @@ const MediaControls = () => {
           autoPlay
           onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
           onDurationChange={() => setSleekTime(audioRef.current.duration)}
-          onEnded={() => {
-            setCurrentTime(audioRef?.current?.duration);
-            dispatch(setIsPlaying(false));
-          }}
+          onEnded={handleSongEnded}
         />
       </div>
 

@@ -25,18 +25,20 @@ const AudioCard = (props: AUDIO_CARD_PROPS) => {
   return (
     <Card className="h-min bg-background border-none drop-shadow-none shadow-none hover:scale-105 duration-300 p-5 gap-3 text-quinary">
       <img
-        src={artworkUrl100}
+        src={artworkUrl100.replace("100x100", "900x900")}
         alt="track preview"
         className="rounded-lg mx-auto shadow-xl h-32 md:h-36 lg:h-44"
         style={{ maxHeight: "-webkit-fill-available" }}
         onClick={playSong}
+        loading="lazy"
+        decoding="async"
       />
 
       <CardHeader className="p-1">
         <TypographyH4 className="text-primary truncate">
           {collectionName || "--"}
         </TypographyH4>
-        <CardDescription>by {artistName}</CardDescription>
+        <CardDescription className="truncate">by {artistName}</CardDescription>
       </CardHeader>
     </Card>
   );
