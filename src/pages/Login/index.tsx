@@ -1,42 +1,7 @@
-import Cookies from "js-cookie";
-import { ChangeEvent, MouseEvent, useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import LabeledInput from "@/components/ui/labeledInput";
 import { TypographyP } from "@/components/ui/typography";
-
-interface LOGIN_DATA {
-  username: string;
-  password: string;
-}
+import LoginForm from "./LoginForm";
 
 const Login = () => {
-  const navigate = useNavigate();
-
-  const [loginData, setLoginData] = useState<LOGIN_DATA>({
-    username: "",
-    password: "",
-  });
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value });
-  };
-
-  const handleLogin = (e: MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    Cookies.set("username", loginData.username);
-
-    setTimeout(() => {
-      navigate("/");
-      setIsLoading(false);
-    }, 1000);
-  };
-
   return (
     <div className="bg-white relative">
       <div
@@ -61,44 +26,7 @@ const Login = () => {
                 Welcome to !Spotify
               </TypographyP>
 
-              <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
-                <LabeledInput
-                  label="Username"
-                  name="username"
-                  value={loginData.username}
-                  placeHolder="Username"
-                  onChange={handleChange}
-                  type="text"
-                  required={true}
-                />
-                <LabeledInput
-                  label="Password"
-                  name="password"
-                  value={loginData.password}
-                  placeHolder="Password"
-                  onChange={handleChange}
-                  type="password"
-                  required={true}
-                />
-                <Button
-                  className="w-full"
-                  disabled={isLoading}
-                  onClick={handleLogin}
-                >
-                  {isLoading ? (
-                    <>
-                      <img
-                        src="/svgs/circular-loader.svg"
-                        alt="loader"
-                        className="text-white animate-spin mr-4"
-                      />
-                      Logging in...
-                    </>
-                  ) : (
-                    "Login"
-                  )}
-                </Button>
-              </div>
+              <LoginForm />
             </div>
             <svg
               viewBox="0 0 91 91"

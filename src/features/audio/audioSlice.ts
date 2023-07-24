@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchAudios } from "./audioThunk";
 import { AUDIO } from "./types";
-import { initialState } from "./initalState";
+import { initialState } from "./initialState";
 
 const audioCounter = createSlice({
   name: "audio",
@@ -23,14 +23,13 @@ const audioCounter = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAudios.pending, (state, action) => {
-        state.searchParam = action.meta.arg.searchTerm || "eminem";
-        // state.offsetParam = action.meta.arg.offset as number;
-
         if ((action?.meta?.arg?.offset as number) > 1) {
           state.isOffsetLoading = true;
-        } else {
-          state.isLoading = true;
+          return;
         }
+
+        state.audios = [];
+        state.isLoading = true;
       })
       .addCase(fetchAudios.fulfilled, (state, action) => {
         if ((action.meta.arg.offset as number) > 1) {

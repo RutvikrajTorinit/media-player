@@ -13,7 +13,7 @@ const MainLayout = () => {
   const isFirstRender = useRef(true);
   const dispatch = useAppDispatch();
 
-  const { playingSong, searchParam, offsetParam } = useAppSelector(
+  const { playingSong, searchParam, offsetParam, audios } = useAppSelector(
     (state) => state.audio
   );
 
@@ -27,16 +27,20 @@ const MainLayout = () => {
   }, [offset]);
 
   useEffect(() => {
-    // TODO Reduce API calls
+    setOffset(offsetParam);
     dispatch(fetchAudios({ offset: offsetParam, searchTerm: searchParam }));
-  }, [searchParam, offsetParam]);
+  }, [offsetParam, searchParam]);
 
-  const handleObserver = useCallback((entries: T) => {
-    const target = entries[0];
-    if (target.isIntersecting && !isFirstRender.current) {
-      setOffset((prev) => prev + 25);
-    }
-  }, []);
+  const handleObserver = useCallback(
+    (entries: T) => {
+      const target = entries[0];
+
+      if (target.isIntersecting && !isFirstRender.current) {
+        setOffset((prev) => prev + 25);
+      }
+    },
+    [audios?.length]
+  );
 
   useEffect(() => {
     const option = {
@@ -59,7 +63,9 @@ const MainLayout = () => {
         <Outlet />
       </div>
 
-      <div ref={loaderRef} className="border-solid border-primary w-96" />
+      {audios?.length ? (
+        <div ref={loaderRef} className="border-solid border-primary w-96" />
+      ) : null}
 
       {playingSong?.artistId ? <MediaControls /> : null}
     </main>
