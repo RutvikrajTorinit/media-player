@@ -6,7 +6,7 @@ interface LABELED_INPUT {
   name: string;
   label: string;
   value: string | number;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (_e: ChangeEvent<HTMLInputElement>) => void;
   type:
     | "button"
     | "checkbox"
