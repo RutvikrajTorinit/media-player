@@ -50,7 +50,7 @@ const Navbar = () => {
     () =>
       debounce((searchTerm) => {
         dispatch(setSearchParam(searchTerm));
-        dispatch(setOffsetParam(1));
+        dispatch(setOffsetParam(0));
       }, 500),
     []
   );

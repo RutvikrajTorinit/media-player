@@ -1,4 +1,4 @@
-import { AUDIO, AUDIO_STATE } from "./types";
+import { AUDIO_STATE } from "./types";
 
 export const initAudio: AUDIO = {
   artistId: 0,
@@ -46,5 +46,5 @@ export const initialState: AUDIO_STATE = {
   isPlaying: false,
   error: "",
   searchParam: "eminem",
-  offsetParam: 1,
+  offsetParam: 0,
 };

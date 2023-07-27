@@ -16,7 +16,7 @@ const getAll = async (props: GET_ALL_REQ_PROPS) => {
       },
     });
 
-    return res;
+    return res?.data;
   } catch (error: T) {
     throw new Error(error?.message);
   }

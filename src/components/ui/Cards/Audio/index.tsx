@@ -2,7 +2,6 @@ import { Card, CardDescription, CardHeader } from "@/components/ui/card";
 import { TypographyH4 } from "../../typography";
 import { useDispatch } from "react-redux";
 import { setIsPlaying, setPlayingSong } from "@/features/audio/audioSlice";
-import { AUDIO } from "@/features/audio/types";
 
 interface AUDIO_CARD_PROPS {
   audio: AUDIO;
@@ -27,7 +26,6 @@ const AudioCard = (props: AUDIO_CARD_PROPS) => {
         className="rounded-lg mx-auto shadow-xl h-32 md:h-36 lg:h-44"
         style={{ maxHeight: "-webkit-fill-available" }}
         onClick={playSong}
-        decoding="async"
       />
 
       <CardHeader className="p-1">

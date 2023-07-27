@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchAudios } from "./audioThunk";
-import { AUDIO } from "./types";
 import { initialState } from "./initialState";
 
 const audioCounter = createSlice({
@@ -32,15 +31,15 @@ const audioCounter = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchAudios.fulfilled, (state, action) => {
-        if ((action.meta.arg.offset as number) > 1) {
-          state.audios.push(...action.payload);
-        } else {
-          state.audios = action.payload;
-        }
-
         state.isLoading = false;
         state.isOffsetLoading = false;
         state.error = "";
+
+        if ((action.meta.arg.offset as number) > 1) {
+          state.audios.push(...action.payload);
+          return;
+        }
+        state.audios = action.payload;
       })
       .addCase(fetchAudios.rejected, (state, action) => {
         state.isLoading = false;

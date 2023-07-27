@@ -18,7 +18,7 @@ const LoginForm = () => {
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: initialState,
@@ -36,6 +36,7 @@ const LoginForm = () => {
   };
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form onSubmit={handleSubmit(handleLogin)} className="w-full">
       <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
         <Controller
@@ -46,10 +47,17 @@ const LoginForm = () => {
               label="Username"
               placeHolder="Username"
               type="text"
+              isError={!!errors.username}
               {...field}
             />
           )}
         />
+
+        {errors.username ? (
+          <span className="text-red-600 text-sm">
+            {errors.username.message}
+          </span>
+        ) : null}
 
         <Controller
           control={control}
@@ -59,10 +67,17 @@ const LoginForm = () => {
               label="Password"
               placeHolder="Password"
               type="password"
+              isError={!!errors.password}
               {...field}
             />
           )}
         />
+
+        {errors.password ? (
+          <span className="text-red-600 text-sm">
+            {errors.password.message}
+          </span>
+        ) : null}
 
         <Button className="w-full" disabled={isSubmitting} type="submit">
           {isSubmitting ? (
