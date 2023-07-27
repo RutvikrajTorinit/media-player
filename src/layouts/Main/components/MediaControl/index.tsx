@@ -52,7 +52,7 @@ const MediaControls = () => {
     }
   }, [isPlaying]);
 
-  const handlePlayPause = () => {
+  const handlePlay = () => {
     if (isPlaying) {
       audioRef.current?.pause();
       dispatch(setIsPlaying(false));
@@ -113,9 +113,9 @@ const MediaControls = () => {
         <div className="flex gap-3">
           <SkipBack className="cursor-pointer" onClick={handlePrevSong} />
           {isPlaying ? (
-            <Pause className="cursor-pointer" onClick={handlePlayPause} />
+            <Pause className="cursor-pointer" onClick={handlePlay} />
           ) : (
-            <Play className="cursor-pointer" onClick={handlePlayPause} />
+            <Play className="cursor-pointer" onClick={handlePlay} />
           )}
           <SkipForward className="cursor-pointer" onClick={handleNextSong} />
         </div>
