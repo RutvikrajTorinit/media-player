@@ -1,13 +1,8 @@
 import getAll from "./axios/getAll";
 
-export interface GET_SONGS_QUERY_PROPS {
-  offset?: number;
-  searchTerm?: string;
-}
-
 export const getSongs = async (props: GET_SONGS_QUERY_PROPS) => {
   try {
-    const { offset = 1, searchTerm = "eminem" } = props;
+    const { offset = 0, searchTerm = "eminem" } = props;
 
     let query = "";
 
@@ -17,11 +12,11 @@ export const getSongs = async (props: GET_SONGS_QUERY_PROPS) => {
 
     query += `term=${searchTerm.length ? searchTerm : "eminem"}&`;
 
-    const res = await getAll({
+    const res: GET_SONGS_RES = await getAll({
       endPoint: `https://itunes.apple.com/search/?${query}limit=25`,
     });
 
-    return res?.data;
+    return res;
   } catch (error: T) {
     throw new Error(error?.message);
   }

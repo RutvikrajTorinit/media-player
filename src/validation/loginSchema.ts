@@ -3,14 +3,15 @@ import z from "zod";
 export const loginSchema = z.object({
   username: z
     .string({
-      required_error: "Please provide username!",
+      required_error: "Username is required!",
     })
-    .nonempty("Please provide username!"),
+    .min(3, "Minimum 3 characters required!")
+    .nonempty("Username is required!"),
   password: z
     .string({
-      required_error: "Please provide password!",
+      required_error: "Password is required!",
     })
-    .nonempty("Please provide password!"),
+    .nonempty("Password is required!"),
 });
 
 export type LoginSchemaType = z.infer<typeof loginSchema>;

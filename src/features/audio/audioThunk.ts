@@ -1,4 +1,4 @@
-import { GET_SONGS_QUERY_PROPS, getSongs } from "@/services/songs";
+import { getSongs } from "@/services/songs";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchAudios = createAsyncThunk(
@@ -6,6 +6,6 @@ export const fetchAudios = createAsyncThunk(
   async (props: GET_SONGS_QUERY_PROPS) => {
     const res = await getSongs(props);
 
-    return res.results;
+    return res?.results;
   }
 );
