@@ -87,5 +87,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family:
+    Proxima Nova,
+    system-ui,
+    sans-serif;
   }
 }

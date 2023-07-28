@@ -4,7 +4,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
-import LabeledInput from "@/components/ui/labeledInput";
+import LabeledInput from "@/components/ui/Inputs/Labeled";
 import { LoginSchemaType, loginSchema } from "@/validation/loginSchema";
 
 const initialState = {

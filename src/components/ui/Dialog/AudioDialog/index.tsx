@@ -6,7 +6,7 @@ import {
   TypographyMuted,
   TypographySmall
 } from "../../typography";
-import { DialogContent, DialogHeader, DialogTitle } from "../dialog";
+import { DialogContent, DialogHeader, DialogTitle } from "../../dialog";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setIsPlaying, setPlayingSong } from "@/features/audio/audioSlice";
 

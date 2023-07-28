@@ -3,7 +3,7 @@ import { TypographyH4 } from "../../typography";
 import { setIsPlaying, setPlayingSong } from "@/features/audio/audioSlice";
 import { Info, PauseCircle, PlayCircle } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { Dialog, DialogTrigger } from "../../Dialog/dialog";
+import { Dialog, DialogTrigger } from "../../dialog";
 import AudioDialog from "../../Dialog/AudioDialog";
 
 interface AUDIO_CARD_PROPS {
