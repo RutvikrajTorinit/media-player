@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
-import { Input } from "./input";
-import { Label } from "./label";
+import { Input } from "../../input";
+import { Label } from "../../label";
 
 interface LABELED_INPUT {
   name: string;
