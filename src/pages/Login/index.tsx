@@ -1,5 +1,5 @@
 import { TypographyP } from "@/components/ui/typography";
-import LoginForm from "./LoginForm";
+import LoginForm from "./components/LoginForm";
 
 const Login = () => {
   return (

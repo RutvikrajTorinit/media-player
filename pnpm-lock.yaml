@@ -68,6 +68,9 @@ dependencies:
   lucide-react:
     specifier: ^0.259.0
     version: 0.259.0(react@18.2.0)
+  prettier:
+    specifier: ^3.0.0
+    version: 3.0.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -130,6 +133,9 @@ devDependencies:
   eslint-plugin-react-refresh:
     specifier: ^0.4.1
     version: 0.4.1(eslint@8.44.0)
+  husky:
+    specifier: ^8.0.0
+    version: 8.0.0
   postcss:
     specifier: ^8.4.25
     version: 8.4.25
@@ -2352,6 +2358,12 @@ packages:
       react-is: 16.13.1
     dev: false
 
+  /husky@8.0.0:
+    resolution: {integrity: sha512-4qbE/5dzNDNxFEkX9MNRPKl5+omTXQzdILCUWiqG/lWIAioiM5vln265/l6I2Zx8gpW8l1ukZwGQeCFbBZ6+6w==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
+
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
@@ -2735,6 +2747,12 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
     dev: true
+
+  /prettier@3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: false
 
   /prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}

@@ -9,7 +9,7 @@ import { LoginSchemaType, loginSchema } from "@/validation/loginSchema";
 
 const initialState = {
   username: "",
-  password: "",
+  password: ""
 };
 
 const LoginForm = () => {
@@ -18,10 +18,10 @@ const LoginForm = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting }
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
-    defaultValues: initialState,
+    defaultValues: initialState
   });
 
   const handleLogin = (data: LoginSchemaType) => {
@@ -36,7 +36,6 @@ const LoginForm = () => {
   };
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form onSubmit={handleSubmit(handleLogin)} className="w-full">
       <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
         <Controller
