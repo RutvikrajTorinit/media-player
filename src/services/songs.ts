@@ -13,7 +13,7 @@ export const getSongs = async (props: GET_SONGS_QUERY_PROPS) => {
     query += `term=${searchTerm.length ? searchTerm : "eminem"}&`;
 
     const res: GET_SONGS_RES = await getAll({
-      endPoint: `https://itunes.apple.com/search/?${query}limit=25`,
+      endPoint: `https://itunes.apple.com/search/?${query}limit=25`
     });
 
     return res;

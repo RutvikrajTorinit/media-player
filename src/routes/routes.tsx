@@ -10,9 +10,9 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Dashboard />,
-      },
-    ],
+        element: <Dashboard />
+      }
+    ]
   },
   {
     path: "/",
@@ -20,14 +20,14 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/login",
-        element: <Login />,
-      },
-    ],
+        element: <Login />
+      }
+    ]
   },
   {
     path: "*",
-    element: <ERROR404 />,
-  },
+    element: <ERROR404 />
+  }
 ]);
 
 export default routes;

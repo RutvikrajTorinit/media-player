@@ -3,14 +3,14 @@ import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from "@/components/ui/popover";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { TypographyH2, TypographySmall } from "@/components/ui/typography";
 import {
   setIsPlaying,
   setOffsetParam,
-  setSearchParam,
+  setSearchParam
 } from "@/features/audio/audioSlice";
 import { useAppDispatch } from "@/store/hooks";
 import Cookies from "js-cookie";
@@ -43,7 +43,7 @@ const Navbar = () => {
   const menus = [
     { text: "Profile", action: () => ({}) },
     { text: "Settings", action: () => ({}) },
-    { text: "Sign out", action: handleLogout },
+    { text: "Sign out", action: handleLogout }
   ];
 
   const debouncedSearch = useMemo(
@@ -65,11 +65,11 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-secondary drop-shadow-lg sticky top-0 z-10">
+    <nav className="sticky top-0 z-10 bg-secondary drop-shadow-lg">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-4">
-            <TypographyH2 className="font-black border-accent text-text cursor-pointer">
+            <TypographyH2 className="cursor-pointer border-accent font-black text-text">
               !Spotify
             </TypographyH2>
 
@@ -92,11 +92,11 @@ const Navbar = () => {
                     />
                   </PopoverTrigger>
 
-                  <PopoverContent className="w-40 hidden md:block">
-                    {menus?.map((menu, id) => (
+                  <PopoverContent className="hidden w-40 md:block">
+                    {menus.map((menu, id) => (
                       <a
                         key={id}
-                        className="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-primary hover:text-background cursor-pointer"
+                        className="block cursor-pointer rounded-md px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-background"
                         role="menuitem"
                         tabIndex={-1}
                         id={`user-menu-item-${id}`}
@@ -154,14 +154,14 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div className="flex flex-col gap-3">
-                    {menus?.map((menu, id) => (
+                    {menus.map((menu, id) => (
                       <Button
                         key={id}
                         onClick={menu.action}
                         variant="secondary"
                         className="border-2 border-accent"
                       >
-                        <TypographySmall className="block px-4 py-2 [&:not(:first-child)]:mt-0 text-sm rounded-md text-gray-700">
+                        <TypographySmall className="block rounded-md px-4 py-2 text-sm text-gray-700 [&:not(:first-child)]:mt-0">
                           {menu.text}
                         </TypographySmall>
                       </Button>

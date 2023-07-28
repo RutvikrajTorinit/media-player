@@ -17,12 +17,12 @@ const audioCounter = createSlice({
     },
     setOffsetParam: (state, action: PayloadAction<number>) => {
       state.offsetParam = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAudios.pending, (state, action) => {
-        if ((action?.meta?.arg?.offset as number) > 1) {
+        if ((action.meta.arg.offset as number) > 1) {
           state.isOffsetLoading = true;
           return;
         }
@@ -46,7 +46,7 @@ const audioCounter = createSlice({
         state.isOffsetLoading = false;
         state.error = action.error.message as string;
       });
-  },
+  }
 });
 
 export const { setIsPlaying, setPlayingSong, setSearchParam, setOffsetParam } =

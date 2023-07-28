@@ -5,7 +5,7 @@ const ERROR404 = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900 ">
-      <div className="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12">
+      <div className="container mx-auto min-h-screen px-6 py-12 lg:flex lg:items-center lg:gap-12">
         <div className="wf-ull lg:w-1/2">
           <p className="text-sm font-medium text-text dark:text-blue-400">
             404 error
@@ -18,9 +18,9 @@ const ERROR404 = () => {
             helpful links:
           </p>
 
-          <div className="flex items-center mt-6 gap-x-3">
+          <div className="mt-6 flex items-center gap-x-3">
             <button
-              className="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-secondary border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:opacity-80 dark:text-gray-200 dark:border-gray-700"
+              className="flex w-1/2 items-center justify-center gap-x-2 rounded-lg border bg-secondary px-5 py-2 text-sm text-gray-700 transition-colors duration-200 hover:opacity-80 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 sm:w-auto"
               onClick={() => navigate(-1)}
             >
               <img src="/svgs/left-arrow.svg" className="w-5" />
@@ -28,7 +28,7 @@ const ERROR404 = () => {
             </button>
 
             <button
-              className="w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-primary rounded-lg shrink-0 sm:w-auto hover:bg-red-800 dark:hover:bg-blue-500 dark:bg-blue-600"
+              className="w-1/2 shrink-0 rounded-lg bg-primary px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 hover:bg-red-800 dark:bg-blue-600 dark:hover:bg-blue-500 sm:w-auto"
               onClick={() => navigate("/")}
             >
               Take me home
@@ -36,7 +36,7 @@ const ERROR404 = () => {
           </div>
         </div>
 
-        <div className="relative w-full mt-12 lg:w-1/2 lg:mt-0">
+        <div className="relative mt-12 w-full lg:mt-0 lg:w-1/2">
           <img
             className="w-full max-w-lg lg:mx-auto"
             src="https://merakiui.com/images/components/illustration.svg"

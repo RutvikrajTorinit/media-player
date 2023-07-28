@@ -2,7 +2,7 @@ import { Slider } from "@/components/ui/slider";
 import {
   TypographyLarge,
   TypographyMuted,
-  TypographySmall,
+  TypographySmall
 } from "@/components/ui/typography";
 import { setIsPlaying, setPlayingSong } from "@/features/audio/audioSlice";
 import formattedDuration from "@/helpers/formatDuration";
@@ -13,7 +13,7 @@ import {
   SkipBack,
   SkipForward,
   Volume1,
-  Volume2,
+  Volume2
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -33,10 +33,8 @@ const MediaControls = () => {
     playingSong;
 
   useEffect(() => {
-    if (playingSong) {
-      if (audioRef.current) {
-        audioRef.current.src = previewUrl;
-      }
+    if (audioRef.current) {
+      audioRef.current.src = previewUrl;
     }
   }, [playingSong, previewUrl]);
 
@@ -46,9 +44,9 @@ const MediaControls = () => {
 
   useEffect(() => {
     if (!isPlaying) {
-      audioRef?.current?.pause();
+      audioRef.current?.pause();
     } else {
-      audioRef?.current?.play();
+      audioRef.current?.play();
     }
   }, [isPlaying]);
 
@@ -65,7 +63,7 @@ const MediaControls = () => {
 
   const handlePrevSong = () => {
     const currentIndex = audios.findIndex(
-      (song) => song.collectionId === playingSong?.collectionId
+      (song) => song.collectionId === playingSong.collectionId
     );
     const previousIndex =
       currentIndex === 0 ? audios.length - 1 : currentIndex - 1;
@@ -76,7 +74,7 @@ const MediaControls = () => {
 
   const handleNextSong = () => {
     const currentIndex = audios.findIndex(
-      (song) => song.collectionId === playingSong?.collectionId
+      (song) => song.collectionId === playingSong.collectionId
     );
     const nextIndex = currentIndex + 1;
     const loopedIndex = nextIndex >= audios.length ? 0 : nextIndex;
@@ -92,24 +90,24 @@ const MediaControls = () => {
   // TODO Add playback loop linear random
 
   return (
-    <div className="m-5 md:m-0 rounded-md md:rounded-none bottom-3 sticky px-3 md:px-10 xl:px-28 sm:bottom-0 h-16 bg-primary text-background flex justify-between md:justify-around items-center">
-      <div className="flex gap-5 basis-1/2 md:basis-3/12">
+    <div className="sticky bottom-3 m-5 flex h-16 items-center justify-between rounded-md bg-primary px-3 text-background sm:bottom-0 md:m-0 md:justify-around md:rounded-none md:px-10 xl:px-28">
+      <div className="flex basis-1/2 gap-5 md:basis-3/12">
         <img
           src={artworkUrl100}
           alt="media image"
-          className="w-10 h-10 md:w-12 md:h-12 rounded-full"
+          className="h-10 w-10 rounded-full md:h-12 md:w-12"
         />
         <div className="space-y-1.5">
-          <TypographyLarge className="w-[7rem] md:w-56 text-sm truncate">
+          <TypographyLarge className="w-[7rem] truncate text-sm md:w-56">
             {collectionCensoredName || "--"}
           </TypographyLarge>
-          <TypographyMuted className="w-[7rem] md:w-56 text-background text-xs truncate">
+          <TypographyMuted className="w-[7rem] truncate text-xs text-background md:w-56">
             {artistName || "--"}
           </TypographyMuted>
         </div>
       </div>
 
-      <div className="flex flex-col items-center basis-1/2 md:basis-6/12 gap-2">
+      <div className="flex basis-1/2 flex-col items-center gap-2 md:basis-6/12">
         <div className="flex gap-3">
           <SkipBack className="cursor-pointer" onClick={handlePrevSong} />
           {isPlaying ? (
@@ -120,7 +118,7 @@ const MediaControls = () => {
           <SkipForward className="cursor-pointer" onClick={handleNextSong} />
         </div>
 
-        <div className="flex w-full items-center gap-1 justify-center">
+        <div className="flex w-full items-center justify-center gap-1">
           <TypographySmall className="hidden md:block">
             {formattedDuration(currentTime)}
           </TypographySmall>
@@ -148,12 +146,12 @@ const MediaControls = () => {
         ref={audioRef}
         src={previewUrl}
         autoPlay
-        onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
+        onTimeUpdate={() => setCurrentTime(audioRef.current?.currentTime)}
         onDurationChange={() => setSleekTime(audioRef.current.duration)}
         onEnded={handleSongEnded}
       />
 
-      <div className="hidden md:flex gap-3 md:basis-3/12">
+      <div className="hidden gap-3 md:flex md:basis-3/12">
         <Volume1
           className="cursor-pointer"
           onClick={() => {

@@ -44,13 +44,13 @@ const LabeledInput = (props: LABELED_INPUT) => {
     type,
     onChange,
     isRequired = false,
-    isError = false,
+    isError = false
   } = props;
 
   return (
     <div className="relative">
       <Label
-        className={`bg-white pt-1 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium absolute ${
+        className={`absolute -mt-3 mb-0 ml-2 mr-0 bg-white pb-0 pl-2 pr-2 pt-1 font-medium ${
           isError ? "text-red-500" : "text-gray-600"
         }`}
       >
@@ -64,7 +64,7 @@ const LabeledInput = (props: LABELED_INPUT) => {
         onChange={onChange}
         type={type}
         required={isRequired}
-        className={`border placeholder-gray-400 focus:outline-none focus:border-black w-full p-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white rounded-md ${
+        className={`mb-0 ml-0 mr-0 mt-2 block w-full rounded-md border bg-white p-4 text-base placeholder-gray-400 focus:border-black focus:outline-none ${
           isError ? "border-red-500" : "border-gray-300"
         }`}
       />

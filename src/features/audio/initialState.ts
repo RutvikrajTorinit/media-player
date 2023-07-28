@@ -33,7 +33,7 @@ export const initAudio: AUDIO = {
   trackViewUrl: "",
   wrapperType: "",
   copyright: "",
-  description: "",
+  description: ""
 };
 
 export const initialState: AUDIO_STATE = {
@@ -46,5 +46,5 @@ export const initialState: AUDIO_STATE = {
   isPlaying: false,
   error: "",
   searchParam: "eminem",
-  offsetParam: 0,
+  offsetParam: 0
 };

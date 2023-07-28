@@ -10,14 +10,14 @@ const MainLayout = () => {
   const { playingSong } = useAppSelector((state) => state.audio);
 
   return user ? (
-    <main className="grid grid-rows-[auto,1fr,auto] min-h-[100vh]">
+    <main className="grid min-h-[100vh] grid-rows-[auto,1fr,auto]">
       <Navbar />
 
-      <div className="container flex items-center justify-center xl:px-20 py-10">
+      <div className="container flex items-center justify-center py-10 xl:px-20">
         <Outlet />
       </div>
 
-      {playingSong?.artistId ? <MediaControls /> : null}
+      {playingSong.artistId ? <MediaControls /> : null}
     </main>
   ) : (
     <Navigate to="/login" />

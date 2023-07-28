@@ -1,7 +1,7 @@
 import AudioCard from "@/components/ui/Cards/Audio";
 import {
   TypographyBlockquote,
-  TypographyLead,
+  TypographyLead
 } from "@/components/ui/typography";
 import { setOffsetParam } from "@/features/audio/audioSlice";
 import { fetchAudios } from "@/features/audio/audioThunk";
@@ -16,7 +16,7 @@ const Dashboard = () => {
     audios,
     isLoading,
     error,
-    isOffsetLoading,
+    isOffsetLoading
   } = useAppSelector((state) => state.audio);
 
   const loaderRef = useRef(null);
@@ -29,6 +29,7 @@ const Dashboard = () => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
     }
+
     dispatch(setOffsetParam(offset));
   }, [offset]);
 
@@ -45,20 +46,26 @@ const Dashboard = () => {
         setOffset((prev) => prev + 25);
       }
     },
-    [audios?.length]
+    [audios.length]
   );
 
   useEffect(() => {
     const option = {
       root: null,
       rootMargin: "20px",
-      threshold: 1,
+      threshold: 1
     };
+
     const observer = new IntersectionObserver(handleObserver, option);
-    if (loaderRef.current) observer.observe(loaderRef.current);
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
 
     return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
     };
   }, [handleObserver]);
 
@@ -69,18 +76,18 @@ const Dashboard = () => {
           Something went wrong!
         </TypographyBlockquote>
       ) : isLoading ? (
-        <Loader2 className="animate-spin text-primary m-auto" size={50} />
-      ) : audios?.length ? (
+        <Loader2 className="m-auto animate-spin text-primary" size={50} />
+      ) : audios.length ? (
         <>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-            {audios?.map((song, id) => (
+            {audios.map((song, id) => (
               <AudioCard key={id} audio={song} />
             ))}
             <div ref={loaderRef} />
           </div>
           <>
             {isOffsetLoading ? (
-              <Loader2 className="animate-spin text-primary m-auto" size={50} />
+              <Loader2 className="m-auto animate-spin text-primary" size={50} />
             ) : null}
           </>
         </>

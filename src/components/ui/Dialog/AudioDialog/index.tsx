@@ -4,7 +4,7 @@ import { ScrollArea } from "../../scroll-area";
 import {
   TypographyLarge,
   TypographyMuted,
-  TypographySmall,
+  TypographySmall
 } from "../../typography";
 import { DialogContent, DialogHeader, DialogTitle } from "../dialog";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -25,7 +25,7 @@ const AudioDialog = (props: AUDIO_CARD_PROPS) => {
     trackExplicitness,
     primaryGenreName,
     releaseDate,
-    previewUrl,
+    previewUrl
   } = audio;
 
   const dispatch = useAppDispatch();
@@ -54,9 +54,9 @@ const AudioDialog = (props: AUDIO_CARD_PROPS) => {
     <DialogContent className="w-[90%] md:w-[31rem]">
       <div className="flex gap-3">
         <img
-          src={artworkUrl100?.replace("100x100", "900x900")}
+          src={artworkUrl100.replace("100x100", "900x900")}
           alt="track preview"
-          className="rounded-md mx-auto shadow-xl h-32 md:h-36 lg:h-44 transition duration-0 group-hover:duration-300 basis-1/5"
+          className="mx-auto h-32 basis-1/5 rounded-md shadow-xl transition duration-0 group-hover:duration-300 md:h-36 lg:h-44"
           style={{ maxHeight: "-webkit-fill-available" }}
         />
         <DialogHeader className="basis-4/5 text-left">
@@ -73,7 +73,7 @@ const AudioDialog = (props: AUDIO_CARD_PROPS) => {
             ) : null}
           </DialogTitle>
 
-          <Icon className="text-primary cursor-pointer" onClick={handlePlay} />
+          <Icon className="cursor-pointer text-primary" onClick={handlePlay} />
         </DialogHeader>
       </div>
 
