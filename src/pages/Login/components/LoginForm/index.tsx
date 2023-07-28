@@ -37,7 +37,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleLogin)} className="w-full">
-      <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
+      <div className="relative mb-0 ml-0 mr-0 mt-6 w-full space-y-8">
         <Controller
           control={control}
           name="username"
@@ -53,7 +53,7 @@ const LoginForm = () => {
         />
 
         {errors.username ? (
-          <span className="text-red-600 text-sm">
+          <span className="text-sm text-red-600">
             {errors.username.message}
           </span>
         ) : null}
@@ -73,7 +73,7 @@ const LoginForm = () => {
         />
 
         {errors.password ? (
-          <span className="text-red-600 text-sm">
+          <span className="text-sm text-red-600">
             {errors.password.message}
           </span>
         ) : null}
@@ -84,7 +84,7 @@ const LoginForm = () => {
               <img
                 src="/svgs/circular-loader.svg"
                 alt="loader"
-                className="text-white animate-spin mr-4"
+                className="mr-4 animate-spin text-white"
               />
               Logging in...
             </>

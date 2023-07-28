@@ -3,26 +3,26 @@ import LoginForm from "./components/LoginForm";
 
 const Login = () => {
   return (
-    <div className="bg-white relative">
+    <div className="relative bg-white">
       <div
-        className="flex flex-col items-center justify-between pt-0 px-8 md:px-10 pb-0 mt-0 mr-auto mb-0 ml-auto max-w-7xl
-          xl:px-5 lg:flex-row my-auto h-screen"
+        className="my-auto mb-0 ml-auto mr-auto mt-0 flex h-screen max-w-7xl flex-col items-center justify-between px-8 pb-0
+          pt-0 md:px-10 lg:flex-row xl:px-5"
       >
-        <div className="flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row">
-          <div className="w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
-            <div className="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
+        <div className="flex w-full flex-col items-center pb-20 pl-10 pr-10 pt-5 lg:flex-row lg:pt-20">
+          <div className="relative w-full max-w-md bg-cover lg:w-7/12 lg:max-w-2xl">
+            <div className="relative flex h-full w-full flex-col items-center justify-center lg:pr-10">
               <img
                 src="https://res.cloudinary.com/macxenon/image/upload/v1631570592/Run_-_Health_qcghbu.png"
                 alt="icon"
               />
             </div>
           </div>
-          <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
+          <div className="relative z-10 mb-0 ml-0 mr-0 mt-20 w-full max-w-2xl lg:mt-0 lg:w-5/12">
             <div
-              className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
-                relative z-10"
+              className="relative z-10 flex flex-col items-start justify-start rounded-xl bg-white pb-10 pl-10 pr-10
+                pt-10 shadow-2xl"
             >
-              <TypographyP className="w-full text-4xl font-medium text-center leading-snug text-text">
+              <TypographyP className="w-full text-center text-4xl font-medium leading-snug text-text">
                 Welcome to !Spotify
               </TypographyP>
 
@@ -30,8 +30,8 @@ const Login = () => {
             </div>
             <svg
               viewBox="0 0 91 91"
-              className="absolute top-0 left-0 z-0 w-32 h-32 -mt-12 -ml-12 text-primary
-                fill-current"
+              className="absolute left-0 top-0 z-0 -ml-12 -mt-12 h-32 w-32 fill-current
+                text-primary"
             >
               <g stroke="none" strokeWidth="1" fillRule="evenodd">
                 <g fillRule="nonzero">
@@ -123,8 +123,8 @@ const Login = () => {
 
             <svg
               viewBox="0 0 91 91"
-              className="absolute bottom-0 right-0 z-0 w-32 h-32 -mb-12 -mr-12 text-accent
-                fill-current"
+              className="absolute bottom-0 right-0 z-0 -mb-12 -mr-12 h-32 w-32 fill-current
+                text-accent"
             >
               <g stroke="none" strokeWidth="1" fillRule="evenodd">
                 <g fillRule="nonzero">

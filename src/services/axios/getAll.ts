@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import axios from "axios";
 
 interface GET_ALL_REQ_PROPS {
@@ -12,11 +10,12 @@ const getAll = async (props: GET_ALL_REQ_PROPS) => {
   try {
     const res = await axios.get(endPoint, {
       headers: {
-        "Content-type": "application/json",
-      },
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        "Content-type": "application/json"
+      }
     });
 
-    return res?.data;
+    return res.data;
   } catch (error: T) {
     throw new Error(error?.message);
   }

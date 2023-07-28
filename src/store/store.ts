@@ -3,8 +3,8 @@ import audioReducer from "@/features/audio/audioSlice";
 
 export const store = configureStore({
   reducer: {
-    audio: audioReducer,
-  },
+    audio: audioReducer
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

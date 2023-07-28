@@ -38,34 +38,36 @@ const AudioCard = (props: AUDIO_CARD_PROPS) => {
   };
 
   return (
-    <Card className="h-min bg-background border-none drop-shadow-none shadow-none p-5 gap-3 text-quinary relative">
+    <Card className="text-quinary relative h-min gap-3 border-none bg-background p-5 shadow-none drop-shadow-none">
       <div className="group relative" onClick={handlePlay}>
         <img
-          src={artworkUrl100.replace("100x100", "900x900")}
+          src={artworkUrl100}
+          srcSet={artworkUrl100.replace("100x100", "900x900")}
           alt="track preview"
-          className={`rounded-lg mx-auto shadow-xl h-32 md:h-36 lg:h-44 transition duration-0 group-hover:duration-300 ${
+          className={`mx-auto h-32 rounded-lg shadow-xl transition duration-0 group-hover:duration-300 md:h-36 lg:h-44 ${
             isSameAudio ? "opacity-60" : "group-hover:opacity-60"
           }`}
           style={{ maxHeight: "-webkit-fill-available" }}
+          loading="lazy"
         />
 
-        <div className="absolute flex justify-center items-center top-0 w-full h-full">
+        <div className="absolute top-0 flex h-full w-full items-center justify-center">
           <Icon
-            className={`bg-primary cursor-pointer text-secondary rounded-full w-8 h-8 p-1 right-8 bottom-4 ${
+            className={`bottom-4 right-8 h-8 w-8 cursor-pointer rounded-full bg-primary p-1 text-secondary ${
               !isSameAudio
-                ? "opacity-0 group-hover:opacity-100 transition duration-0 group-hover:duration-300 "
+                ? "opacity-0 transition duration-0 group-hover:opacity-100 group-hover:duration-300 "
                 : ""
             }`}
           />
         </div>
       </div>
 
-      <CardHeader className="p-1 flex flex-row w-full gap-1">
+      <CardHeader className="flex w-full flex-row gap-1 p-1">
         <div className="w-4/5 whitespace-normal">
-          <TypographyH4 className="text-primary truncate pointer-events-none">
+          <TypographyH4 className="pointer-events-none truncate text-primary">
             {collectionName || "--"}
           </TypographyH4>
-          <CardDescription className="truncate pointer-events-none">
+          <CardDescription className="pointer-events-none truncate">
             by {artistName}
           </CardDescription>
         </div>

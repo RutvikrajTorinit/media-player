@@ -6,6 +6,6 @@ export const fetchAudios = createAsyncThunk(
   async (props: GET_SONGS_QUERY_PROPS) => {
     const res = await getSongs(props);
 
-    return res?.results;
+    return res.results;
   }
 );
